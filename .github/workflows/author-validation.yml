@@ -1,0 +1,19 @@
+name: Author validation
+
+on:
+  push:
+    branches:
+      - validation/interleave-close-head
+      - validation/interleave-close-base
+
+jobs:
+  tests:
+    uses: ./.github/workflows/build_and_publish_template.yml
+    permissions:
+      contents: read
+      id-token: write
+    with:
+      pypi_project_url: ''
+      run_tests_with_bazel: true
+      is_nightly: false
+      is_ci_tests: true
